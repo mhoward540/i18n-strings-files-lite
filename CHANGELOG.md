@@ -1,6 +1,6 @@
-CHANGELOG for i18n-strings-files
+CHANGELOG for i18n-strings-files-lite
 ==================
-This changelog references changes made to the i18n-strings-files package beginning after v0.0.4.
+This changelog references changes made to the i18n-strings-files-lite package beginning after v0.0.4.
 
 * v2.0.0 (2022-06-07)
  * Bump dependencies + iconv version
