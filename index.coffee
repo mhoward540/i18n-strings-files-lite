@@ -1,10 +1,10 @@
 fs = require('fs')
-Iconv  = require('iconv').Iconv
+iconv  = require('iconv-lite')
 
 
 i18nStringsFiles = ->
 
-
+# TODO add TS annotations
 i18nStringsFiles.prototype.readFile = (file, options, callback) ->
   encoding = null
   wantsComments = false
@@ -86,16 +86,14 @@ i18nStringsFiles.prototype.convertBufferToString = (buffer, encoding) ->
   # if no encoding is passed in, default to utf-16 (as recommended by Apple)
   if !encoding then encoding = 'UTF-16'
   # convert buffer to utf-8 string and return
-  iconv = new Iconv(encoding, 'UTF-8')
-  return iconv.convert(buffer).toString('utf8')
+  return iconv.decode(buffer, encoding)
 
 
 i18nStringsFiles.prototype.convertStringToBuffer = (str, encoding) ->
   # if no encoding is passed in, default to utf-16 (as recommended by Apple)
   if !encoding then encoding = 'UTF-16'
   # convert string from utf-8 to buffer in output encoding
-  iconv = new Iconv('UTF-8', encoding)
-  return iconv.convert(str)
+  return iconv.encode(str, encoding)
 
 
 i18nStringsFiles.prototype.parse = (input, wantsComments) ->
